@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- 타임리프 / 레이아웃 : default -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+</th:block>
+
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+</th:block>
+
+<div layout:fragment="content">
+
+	<div class="container">
+		<h2>사용자 리스트 목록</h2>
+		총 사용자:
+		<th th:text= "${list.totalElements}"></th>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>패스워드</th>
+					<th>이름</th>
+					<th>이메일</th>
+					<th>권한</th>
+					<!-- <th>가입일</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${list.totalElements} > 0" th:each="vo : ${list}">
+					<td><a th:href="@{/user/userDetail/{id}(id=${vo.id})}"
+						th:text="${vo.id}"></a> <!-- <a th:href="@{/user/userDetail/(id=${vo.id})"></a>  -->
+					</td>
+					<td th:text="${vo.pw}"></td>
+					<td th:text="${vo.name}"></td>
+					<td th:text="${vo.email}"></td>
+					<td th:text="${vo.role}"></td>
+					<!-- <td th:text="${vo.joinDate}"></td> -->
+				</tr>
+				<tr th:unless="${#lists.size(list)} > 0">
+					<td colspan="5">조회된 결과가 없습니다.</td>
+				</tr>
+			</tbody>
+		</table>
+	<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+			 <li class="page-item" th:classappend="${1 == list.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#"
+                        th:href="@{/user/userList(page=${list.pageable.pageNumber - 1},searchText=${param.searchText})}"
+                        tabindex="-1" aria-disabled="true">이전</a>
+                </li>
+				<li class="page-item" 
+				th:classappend="${i == list.pageable.pageNumber + 1} ? 'disabled'"
+				th:each="i : ${#numbers.sequence(startPage, endPage)}">
+				<a class="page-link" href="#" 
+				th:href="@{/user/userList(page=${i - 1}, searchText = ${param.searchText})}"
+				th:text="${i}">1</a></li>
+				<li class="page-item" 
+				th:classappend="${list.totalPages == list.pageable.pageNumber + 1} ? 'disabled'">
+				<a class="page-link" href="#" 
+				th:href="@{/user/userList(page=${list.pageable.pageNumber + 1}, searchText=${param.searchText})}">다음</a></li>
+			</ul>
+		</nav>
+		 <form class="d-flex justify-content-end">
+		<!-- Standard button -->
+<button type="button" class="btn btn-default">
+			<a href="/user/userInsert">사용자추가</a>
+		</button>
+		</form>
+	</div>
+
+</div>
+</html>

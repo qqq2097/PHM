@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="sidebarFragment">
+<section id="sidebar"> 
+    <div class="white-label">
+    </div> 
+    <div id="sidebar-nav">   
+      <ul>
+        <li class="active"><a href="/Home"><i class="fa fa-dashboard"></i> 메인 화면 </a></li>
+      <li><a href="/board/boardList"><i class="fa fa-desktop"></i> 공지사항 </a></li>
+      <li><a href="/complain/complainList"><i class="fa fa-pencil-square-o"></i> 건의 게시판 </a></li>
+      <li><a href="#"><i class="fa fa-map-marker"></i> 공조기 설치 현황 </a></li>     
+      <li><a href="/profile"><i class="fa fa-users"></i> 팀원 소개 </a></li>
+      <li><a href="/user/userList"><i class="fa fa-sitemap"></i> 사용자 관리 </a></li>
+      </ul>
+    </div>
+  </section>
+  <section id="content">
+    <div id="header">
+      <div class="header-nav">
+        <div class="menu-button">
+          <!--<i class="fa fa-navicon"></i>-->
+        </div>
+        <div class="nav">
+          <ul>
+            <li class="nav-settings">
+              <div class="font-icon"><i class="fa fa-tasks"></i></div>
+        
+            <li class="nav-profile">
+              <!--div class="nav-profile-image">
+                <img src="pro.png" alt="profile-img" alt="profile image"> -->
+                <!--  <div class="nav-profile-name">김민지</div>-->
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+   
+    </section>
+    </div>
+    </html>
+    

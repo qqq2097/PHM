@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link th:href="@{/Login.css}" rel="stylesheet" />
+        </head>
+        <body>
+<h2>Air Handling Unit PHM</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form id="frm" name="frm" method="post" action="/login/signUp">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<!--  <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			<!-- 구글, 카카오톡 로그인 api 사용할 예정 -->
+			</div>
+			<!--  <span>or use your email for registration</span> -->
+			<input type="text" name="id" placeholder="아이디" />
+			<input type="email" name="email" placeholder="이메일" />
+			<input type="password" name="pw"placeholder="비밀번호" />
+			<button type="submit">회원가입</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form method="post">
+			<h1>Sign In</h1>
+			<div class="social-container">
+				<!--  <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+			</div>
+			<!--  <span>or use your account</span> -->
+			<input type="text" name="username" class="form-control" id="username" placeholder="아이디를 입력하세요">
+			<input type="password" name="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+			<!--  <a href="#">비밀번호 찾기</a> -->
+			<button type="submit" value="login"> 로그인 </button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>환영합니다!</h1>
+				<p></p>
+				<button class="ghost" id="signIn">로그인으로 이동</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>안녕하세요!</h1>
+				<p></p>
+				<button class="ghost" id="signUp">회원가입으로 이동</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+ <script type="text/javascript" th:src="@{/login/login.js}"></script>
+<footer>
+	<p>
+		Created with inhatc.
+	</p>
+</footer>
+</body>
+</html>
